@@ -1,0 +1,122 @@
+img.logo{
+   width: auto;
+    height: 120%;
+    display:inline-block;
+    margin-right:5px;
+}
+.loading-data{
+    background: transparent url("../img/loading3.gif") no-repeat scroll 48% 25%;
+    z-index:1000;
+}
+div.search-box {
+    width: 50%;
+    margin: 50px 25%;
+    height: 400px;
+}
+.query-input {
+    width: 70%;
+    display:inline-block;
+    margin-right:10px;
+}
+form.qbox {
+    margin: 20px 0;
+}
+#tag-restricts{
+    border-bottom:1px solid #eee;
+    height: 40px;
+    margin-top: -5px;
+    margin-bottom: 15px;
+    padding: 0px 140px;
+    width: 100%;
+}
+div.stag {
+    display: inline-block;
+    width:auto;
+    height:28px;
+    padding: 7px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    color: #6E6E6E;
+    cursor: pointer;
+}
+.ctag {
+    cursor: pointer;
+}
+.ctag:hover {
+    background-color: #EAEAEA;
+}
+div.stag:hover {
+    opacity: 0.8
+}
+.stag.selected {
+    background-color: #E6E6E6;
+}
+.stag.excluded {
+    background-color: #F2F2F2;
+}
+.results-block {
+    width: 100%;
+    min-height: 300px;
+    height:auto;
+}
+.semfilter-panel {
+    min-width: 180px;
+    height: auto;
+    min-height: 500px;
+    display:inline-block;
+    float:left;
+}
+.results-panel {
+    width: 45%;
+    min-width: 600px;
+    height: auto;
+    min-height:1000px;
+    margin-left:60px;
+    display:inline-block;
+}
+.entity-block{
+    width: 100%;
+    padding: 10px 0px;
+    height: auto;
+    min-height: 120px;
+    border-bottom:1px solid #eee;
+}
+.entity-snippets {
+    width: 100%;
+    height: auto;
+    min-height: 100px;
+}
+.entity-snippets>ul {
+    list-style-type: none;
+    width:100%;
+    height:auto;
+}
+.link {
+    color: #3366EE;
+    cursor: pointer;
+}
+.link:hover{
+    color: #1155CC;
+}
+.entity-snippets>ul {
+	padding: 0;
+}
+.entity-snippets>ul>li {
+    list-style-type:none;
+    display: block;
+    width: 98%;
+    padding: 5px 1%;
+    font-size: 13px;
+}
+.entity-snippet{
+    width: 100%;
+}
+.snippet-relation {
+    font-weight: bold;
+}
+
+.snippet-content {
+    word-wrap: break-word;
+    word-break: normal;
+    margin-left: 10px;
+}
