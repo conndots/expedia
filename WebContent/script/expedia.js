@@ -200,9 +200,12 @@ function loadCandidateTags($target) {
                 $span.addClass('cand-tag');
                 $target.append($span);
             });
-            var $otherTag = getTagComponent({tagID: '', label: 'Others'});
-            $otherTag.addClass('others-tag');
-            $target.append($otherTag);
+            if (CURR_STYPE == SYNSET_TAGS_SEARCH) {
+                var $otherTag = getTagComponent({tagID: '', label: 'Others'});
+                $otherTag.addClass('others-tag');
+                $target.append($otherTag);
+            	
+            }
         }
     });
 }
@@ -264,21 +267,25 @@ function getQueryUrl(query, page, searchType, selectedTagIDs, excludedTagIDs) {
 
     if (selectedTagIDs && selectedTagIDs.length > 0) {
         var ststr = "&st=";
+        var append = "";
         $.each(selectedTagIDs, function(i, tid) {
-            ststr += tid;
+            append += tid;
             if (i < selectedTagIDs.length - 1)
-                ststr += ";";
+                append += ";";
         });
-        queryUrl += ststr;
+        append = encodeURIComponent(append);
+        queryUrl += ststr + append;
     }
     if (excludedTagIDs && excludedTagIDs.length > 0) {
         var etstr = "&et=";
+        var append = "";
         $.each(excludedTagIDs, function(i, tid) {
-            etstr += tid;
+            append += tid;
             if (i < excludedTagIDs.length - 1)
-                etstr += ";";
+                append += ";";
         });
-        queryUrl += etstr;
+        append = encodeURIComponent(append);
+        queryUrl += etstr + append;
     }
     return queryUrl;
 }

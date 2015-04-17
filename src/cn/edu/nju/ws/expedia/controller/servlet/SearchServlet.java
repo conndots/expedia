@@ -42,7 +42,7 @@ public class SearchServlet extends HttpServlet{
         List<String> selectedTagIDs = qcbean.getSeleTagIDs(),
                 excludedTagIDs = qcbean.getExclTagIDs();
         SemanticTagsFilter filter = SemFilterFactory.getSemanticTagsFilter(searchType);
-        QueryContext qcontext = QueryContext.getInstance(query, selectedTagIDs, excludedTagIDs, EStoreNodeFactory.getInstance(), filter);
+        QueryContext qcontext = QueryContext.getInstance(searchType, query, selectedTagIDs, excludedTagIDs, EStoreNodeFactory.getInstance(), filter);
         return qcontext;
     }
     public void doProcess(HttpServletRequest request, HttpServletResponse response) throws IOException,ServletException{
@@ -66,7 +66,9 @@ public class SearchServlet extends HttpServlet{
             session.setAttribute("qcontext", queryContext);
         }
         else {
-            String currID = Util.getQueryContextIDFrom(qcbean.getQuery(), qcbean.getSeleTagIDs(), qcbean.getExclTagIDs());
+//        	System.out.println("1:" + queryContext.getIdentifier());
+            String currID = Util.getQueryContextIDFrom(qcbean.getSearchType(), qcbean.getQuery(), qcbean.getSeleTagIDs(), qcbean.getExclTagIDs());
+//        	System.out.println("2:" + currID);
             if (! currID.equals(queryContext.getIdentifier())) {
                 queryContext = getNewQueryContext(qcbean);
                 session.setAttribute("qcontext", queryContext);

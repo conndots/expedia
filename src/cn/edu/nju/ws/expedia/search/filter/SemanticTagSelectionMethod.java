@@ -78,7 +78,7 @@ public class SemanticTagSelectionMethod  implements SemanticTagsFilter {
 		int count = this.getDis.getSemTagTaggingCount(stag);
 		int max = this.getDis.getMaximumSemTagTaggingCount();
 
-		double cost = 1d - ((count) / max);
+		double cost = 1d - ((0d + count) / (0d + max));
 
 		return cost;
 	}

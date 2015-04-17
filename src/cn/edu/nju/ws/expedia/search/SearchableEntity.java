@@ -85,5 +85,10 @@ public class SearchableEntity implements Searchable {
     	}
     	return false;
     }
+
+	@Override
+	public List<URIResource> getTypes(boolean loadFromDB) {
+		return this.resource.getTypes(loadFromDB);
+	}
     
 }

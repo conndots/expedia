@@ -20,6 +20,7 @@ import java.util.concurrent.TimeUnit;
  * Created by Xiangqian on 2015/4/10.
  */
 public class QueryContext {
+	protected int searchType = Util.SYNSET_TAGS_SEARCH;
     protected String identifier = null;
     protected SearchableFactory entityFactory = null;
     protected ArrayList<Searchable> searchResults = null;
@@ -45,7 +46,7 @@ public class QueryContext {
         this.excludedTags = excludedTags;
     }
 
-    public static QueryContext getInstance(String query, List<String> selectedTagIDs, List<String> excludedTagIDs,
+    public static QueryContext getInstance(int searchType, String query, List<String> selectedTagIDs, List<String> excludedTagIDs,
                                            NodeFactory nodeFactory, SemanticTagsFilter filter) {
 //    	System.out.println("Create new QueryContext instance." + query);
         List<SemTag> selectedTags = null,
@@ -67,6 +68,7 @@ public class QueryContext {
             }
         }
         QueryContext instance = new QueryContext(nodeFactory, query, selectedTags, excludedTags);
+        instance.searchType = searchType;
         instance.queryAgent = new DefaultIndexQueryAgent();
         instance.comparator = new RelavanceImportanceCombinedComparator();
         instance.snippetGen = new TripleQRelateSnippetGen();
@@ -213,7 +215,7 @@ public class QueryContext {
                 exclTagIDs.add(tag.getIdentifier());
             }
         }
-        return Util.getQueryContextIDFrom(this.query, seleTagIDs, exclTagIDs);
+        return Util.getQueryContextIDFrom(this.searchType, this.query, seleTagIDs, exclTagIDs);
     }
     public String getIdentifier() {
         if (this.identifier == null)

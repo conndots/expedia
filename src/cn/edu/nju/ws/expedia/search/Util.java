@@ -17,8 +17,9 @@ public class Util {
         FILTERED_TYPES.add(cn.edu.nju.ws.expedia.model.rdf.Util.OWL_NS + "Thing");
     }
 
-    public static String getQueryContextIDFrom(String query, List<String> selectedTagIDs, List<String> excludedTagIDs) {
-        StringBuilder id = new StringBuilder(query);
+    public static String getQueryContextIDFrom(int searchType, String query, List<String> selectedTagIDs, List<String> excludedTagIDs) {
+        StringBuilder id = new StringBuilder();
+        id.append(searchType).append(":").append(query);
         id.append("+[");
         if (selectedTagIDs != null) {
             Collections.sort(selectedTagIDs);

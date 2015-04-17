@@ -11,7 +11,7 @@ public class SemFilterFactory {
             return new SemanticTagSelectionMethod();
         }
         else if (searchType == Util.TYPE_TAGS_SEARCH) {
-            //TODO
+            return new SimpleTypeTagsFilter();
         }
         else if (searchType == Util.NO_TAGS_SEARCH) {
             return null;

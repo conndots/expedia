@@ -52,14 +52,14 @@
   QueryContext qcontext = (QueryContext) session.getAttribute("qcontext");
   if (qcontext == null) {
     SemanticTagsFilter filter = SemFilterFactory.getSemanticTagsFilter(searchType);
-    qcontext = QueryContext.getInstance(query, selectedTags, excludedTags, EStoreNodeFactory.getInstance(), filter);
+    qcontext = QueryContext.getInstance(searchType, query, selectedTags, excludedTags, EStoreNodeFactory.getInstance(), filter);
     session.setAttribute("qcontext", qcontext);
   }
   else {
-    String currID = Util.getQueryContextIDFrom(query, selectedTags, excludedTags);
+    String currID = Util.getQueryContextIDFrom(searchType, query, selectedTags, excludedTags);
     if (! currID.equals(qcontext.getIdentifier())) {
       SemanticTagsFilter filter = SemFilterFactory.getSemanticTagsFilter(searchType);
-      qcontext = QueryContext.getInstance(query, selectedTags, excludedTags, EStoreNodeFactory.getInstance(), filter);
+      qcontext = QueryContext.getInstance(searchType, query, selectedTags, excludedTags, EStoreNodeFactory.getInstance(), filter);
       session.setAttribute("qcontext", qcontext);
     }
   }

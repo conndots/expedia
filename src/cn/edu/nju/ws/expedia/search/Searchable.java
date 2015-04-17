@@ -14,6 +14,7 @@ import java.util.Set;
 public interface Searchable {
     public Set<SemTag> getTaggedSemTags(SemanticTagsFilter tagsFilter);
     public String getURI();
+    public List<URIResource> getTypes(boolean loadFromDB);
     public double getSortScore();
     public String getIdentifier();
     public String getLabel(boolean loadFromDB);
